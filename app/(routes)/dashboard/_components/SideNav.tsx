@@ -19,30 +19,41 @@ function SideNav() {
       activeTeam&&getFiles();
     }, [activeTeam])
 
-    const onFileCreate=(fileName:string)=>{
-        console.log(fileName)
-        createFile({
-            fileName:fileName,
-            teamId:activeTeam?._id,
-            createdBy:user?.email,
-            archive: false,
-            document:'',
-            whiteboard:''
-        }).then(resp=>{
-            if(resp){
-              toast('File created successfully')
-            }
-        }, (e)=>{
-            toast('Error while creating file')
-        })
-    }    
+    const onFileCreate = (fileName: string) => {
+      if (!activeTeam?._id || !user?.email) {
+        toast.error("Team or user not found. Cannot create file.");
+        return;
+      }
 
-    const getFiles = async() => {
-      const result = await convex.query(api.files.getFiles, {teamId:activeTeam?._id});
-      console.log(result);
+      createFile({
+        fileName: fileName,
+        teamId: activeTeam._id, 
+        createdBy: user.email,
+        archive: false,
+        document: '',
+        whiteboard: ''
+      }).then(resp => {
+        if (resp) {
+          toast('File created successfully');
+        }
+      }).catch((e) => {
+        toast('Error while creating file');
+        console.error(e);
+      });
+};
+    
+
+    const getFiles = async () => {
+      if (!activeTeam?._id) return;
+
+      const result = await convex.query(api.files.getFiles, {
+        teamId: activeTeam._id
+      });
+
       setFileList_(result);
-      setTotalFiles(result?.length)
-    }
+      setTotalFiles(result?.length);
+    };
+
 
   return (
     <div className='h-screen fixed w-72 border-r border-[1px] p-6 flex flex-col'>
