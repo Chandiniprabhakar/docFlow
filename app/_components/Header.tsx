@@ -19,7 +19,7 @@ function Header() {
 
             <div className="flex flex-1 items-center justify-end md:justify-between">
             <nav aria-label="Global" className="hidden md:block">
-                <ul className="flex items-center gap-6 text-sm">
+                {/* <ul className="flex items-center gap-6 text-sm">
                 <li>
                     <a className="text-black transition hover:text-black/75" href="#"> About </a>
                 </li>
@@ -43,7 +43,7 @@ function Header() {
                 <li>
                     <a className="text-black transition hover:text-black/75" href="#"> Blog </a>
                 </li>
-                </ul>
+                </ul> */}
             </nav>
 
             <div className="flex items-center gap-4">

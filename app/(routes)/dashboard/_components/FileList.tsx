@@ -46,8 +46,7 @@ function FileList() {
                 <th className="px-3 py-2 whitespace-nowrap">Edited</th>
                 <th className="px-3 py-2 whitespace-nowrap">Author</th>
             </tr>
-       
-      
+
     </thead>
 
     <tbody className="divide-y divide-gray-200 *:even:bg-gray-50">
@@ -69,14 +68,14 @@ function FileList() {
             className='rounded-full'
             />
         </td>
-        <td className="px-3 py-2 whitespace-nowrap">
+        {/* <td className="px-3 py-2 whitespace-nowrap">
             <DropdownMenu>
                 <DropdownMenuTrigger><MoreHorizontal /></DropdownMenuTrigger>
                 <DropdownMenuContent>
                     <DropdownMenuItem className='gap-3'><Archive className='h-4 w-4'/> Archive</DropdownMenuItem>
                 </DropdownMenuContent>
             </DropdownMenu>
-        </td>
+        </td> */}
       </tr>
     ))}
 

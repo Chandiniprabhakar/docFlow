@@ -1,3 +1,4 @@
+import { LoginLink } from '@kinde-oss/kinde-auth-nextjs'
 import React from 'react'
 
 function Hero() {
@@ -20,10 +21,10 @@ function Hero() {
 
             <div className="mt-4 flex justify-center gap-4 sm:mt-6">
                 <a
-                className="inline-block rounded border border-[#1150ab] bg-[#1150ab] px-5 py-3 font-medium text-white shadow-sm transition-colors hover:bg-indigo-700"
+                className="inline-block rounded border border-[#1150ab] bg-[#1150ab] px-5 py-3 font-medium text-white shadow-sm transition-colors hover:bg-blue-900"
                 href="#"
                 >
-                Learn More
+                <LoginLink postLoginRedirectURL="/dashboard">Explore</LoginLink>
                 </a>
             </div>
             </div>

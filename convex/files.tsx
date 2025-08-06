@@ -61,3 +61,27 @@ export const updateWhiteboard = mutation({
         return result;
     },
 })
+
+export const searchFiles = query({
+  args: {
+    query: v.string(),
+  },
+  handler: async (ctx, args) => {
+    const allFiles = await ctx.db.query('files').collect();
+
+    const filtered = allFiles.filter(file =>
+      file.name.toLowerCase().includes(args.query.toLowerCase())
+    );
+
+    return filtered;
+  },
+});
+
+export const archiveFile = mutation({
+  args: { fileId: v.id("files") },
+  handler: async (ctx, args) => {
+    await ctx.db.patch(args.fileId, {
+      archive: true,
+    });
+  },
+});

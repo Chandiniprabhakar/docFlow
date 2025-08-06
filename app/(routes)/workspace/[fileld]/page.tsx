@@ -25,8 +25,10 @@ function Workspace({params}:any) {
   }
   return (
     <div>
-      <WorkspaceHeader onSave={() => setTriggerSave(!triggerSave)}/>
-
+      <WorkspaceHeader 
+        onSave={() => setTriggerSave(!triggerSave)} 
+        fileId={params.fileld}
+      />
       {/* Workspace Layout */}
       <div className='grid grid-cols-1 md:grid-cols-2'>
         {/* Document */}
